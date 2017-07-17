@@ -1,2 +1,2 @@
-# test
-git做测试的一个项目
+vue-cli初始化项目
+iview-ui
