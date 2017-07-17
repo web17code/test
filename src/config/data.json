@@ -1,0 +1,12 @@
+{"kk" : [{
+          "y":55.11,
+          "color":"red",
+          "drilldown":{
+          "name":"IE 版本",
+          "categories":["IE 6.0","IE 7.0","IE 8.0","IE 9.0"],
+          "data":[10.85, 7.35, 33.06, 2.81],
+          "color":"red"
+          }
+         }
+        ]
+}

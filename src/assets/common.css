@@ -1,0 +1,23 @@
+div{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.Pshadow:hover .Sshadow{
+  box-shadow:3px 3px 5px #909080;
+  transition-duration: 0.4s;
+  transition-property:box-shadow;
+  -o-box-shadow: 3px 3px 5px #909080;
+  -moz-box-shadow: 3px 3px 5px #909080;
+  -webkit-box-shadow: 3px 3px 5px #909080;
+  -o-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+}
+/*
+  border:#909090 1px solid;
+  border-radius: 7px;
+  -o-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+*/
