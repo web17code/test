@@ -2,11 +2,50 @@
     /**
     * Created by web17code on 2017/7/12.
     */
+  .btnBlock{
+    padding-top:15px;
+    padding-bottom: 15px;
+  }
+  .btnBlock button{
+    min-width: 80px;
+    padding: 4px 9px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    border-color: #dddee1;
+    display: inline-block;
+    margin-bottom: 0px;
+    vertical-align: middle;
+    cursor: pointer;
+    color:#495060;
+    transition: color .2s linear,background-color .2s linear,border .2s linear;
+  }
+    .btnBlock button:focus{
+      color:#495060;
+      background-color: #f7f7f7;
+      outline: 0;
+    }
+  .btnBlock button:hover{
+    background: #fff;
+  }
+
 </style>
 
 <template>
   <div>
     <p>区情地图</p>
+    <div class="btnBlock">
+      <button @click="deleteMarkerAll">全部</button>
+      <button @click="addAll(mapObj.map,mapObj.markMapData)">学前教育</button>
+      <button>小学</button>
+      <button>中学</button>
+      <button>一贯制</button>
+      <button>特殊教育</button>
+      <button>中职成校</button>
+      <button>民办教育</button>
+      <button>其他单位</button>
+      <button>相关机构</button>
+    </div>
     <div id="mapDiv" style="height: 480px;"></div>
   </div>
 </template>
@@ -34,6 +73,8 @@
               mapStyle: 'amap://styles/f85400cb023a7ef6191dfd5faa051592',//样式URL
               center: [121.099109,31.147121],
               resizeEnable: true,
+              scrollWheel:false,//不允许滚轮放大缩小
+              //zoomEnable:false,
               zoom: 11
             });
             //添加地图的平移和缩放控件
@@ -41,8 +82,10 @@
             //绘制青浦描边
             this.addqpblock(map);
             //初始化标记点
-            var markMapData = this.initMarkerAll(map,markerdata.data);
-            //return {map:map,markMapData:markMapData};
+            var mapMarkArr = this.initMarkerAll(map,markerdata.data);
+            this.mapObj.map=map;//地图对象
+            this.mapObj.mapMarkArr=mapMarkArr;//地图标注点数组
+            this.mapObj.markMapData=markerdata.data;//后台数据
           },
           //初始化所有的地图标注点
           initMarkerAll:function (map,data){
@@ -96,13 +139,17 @@
             })
           },
           //删除所有的标注点
-          deleteMarkerAll: function (data){//删除所有的标注点函数
+          deleteMarkerAll: function (){//删除所有的标注点函数
+            var data=this.mapObj.mapMarkArr;
             for(var key in data){
               for(var innerkey in data[key]){
                 data[key][innerkey].setMap(null);//对marker集合的每一个进行删除
               }
             }
           },
+          addAll:function(map,data){
+            this.mapObj.mapMarkArr=this.initMarkerAll(map,data);
+          }
       },
       mounted:function () {
           this.initmap();
