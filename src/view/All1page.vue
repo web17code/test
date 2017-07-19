@@ -2,17 +2,6 @@
   .chartCollapse{
     text-align: center;
   }
-  /*fade translate annimation start*//*
-  .fade-enter-active{
-    transition: opacity 15s
-  }
-  .fade-leave-active {
-    !*transition: opacity 0.5s*!
-  }
-  .fade-enter, .fade-leave-to{
-    opacity: 0
-  }*/
-  /*--------*/
   .fade-enter-active {
     transition: all .5s ease;
   }
@@ -25,29 +14,16 @@
   .fade-leave-to{
     transform: translateX(20px);
   }
-  /*.bounce-enter-active {
-    animation: bounce-in .5s;
-  }
-  .bounce-leave-active {
-    animation: bounce-in .5s reverse;
-  }
-  @keyframes bounce-in {
-    0% {
-      transform: scale(0);
-    }
-    50% {
-      transform: scale(1.5);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }*/
-  /*fade translate annimation end*/
 </style>
 <template>
   <div>
   <div class="layout-content">
     <div class="layout-content-main">
+      <Row class="code-row-bg">
+        <Col span="24">
+          <mapp></mapp>
+        </Col>
+      </Row>
       <Row class="code-row-bg">
         <Col span="8" class="Pshadow">
         <chartx3 :id="pie_1" :option="option_bar1" :chartTitleClass="'chatTitle_blue'"></chartx3>
@@ -101,6 +77,7 @@
   import headDataShow from "../components/headDataShow.vue"
   import options from "../config/highcharts.config.js"
   import utils from "../utils/utils"
+  import map1 from "../components/map1.vue"
   var optionbar1 = utils.deepCopy(options.bar);
   var title969 = utils.deepCopy(options.ctitle_969);
   optionbar1.title = title969;
@@ -120,7 +97,8 @@
     },
     components:{
       chartx3:chartx3,
-        headdatashow:headDataShow
+      headdatashow:headDataShow,
+      mapp:map1
     },
     methods:{
       "fold":function(now){
