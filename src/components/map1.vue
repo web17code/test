@@ -2,7 +2,6 @@
     /**
     * Created by web17code on 2017/7/12.
     */
-
 </style>
 
 <template>
@@ -56,7 +55,7 @@
                   position: value.position, //基点位置
                   title:value.title,
                   offset: new AMap.Pixel(-17, -42), //相对于基点的偏移位置
-                  content: '<div class="'+key+'" style="background: palevioletred;width:30px;height:30px;"></div>'   //自定义点标记覆盖物内容
+                  content: '<div class="markerIcon1 '+key+'"></div>'   //自定义点标记覆盖物内容
                 })
               })
             }

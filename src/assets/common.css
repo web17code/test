@@ -14,6 +14,26 @@ div{
   -moz-transition-duration: 0.4s;
   -webkit-transition-duration: 0.4s;
 }
+/*map marker style start*/
+.markerIcon1 {
+  width: 20px;
+  height: 22px;
+  background: url("../assets/img/icon.png") no-repeat;
+}
+.markerIcon1.xiaoxue{
+  height: 25px;
+  background-position: -23px -21px;
+}
+.markerIcon1.zhongxue{
+  height: 25px;
+  background-position: 0px -21px;
+}
+.markerIcon1.daxue{
+  height: 25px;
+  background-position: -68px -21px;
+}
+
+/*map marker style end*/
 /*
   border:#909090 1px solid;
   border-radius: 7px;
