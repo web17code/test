@@ -121,6 +121,13 @@
             activeMenuItem:menuConfig.menus.All.memuitem[0].name
           }
       },
+      mounted:function(){
+          console.log("jinlaile ++++++++++")
+        this.$http.get('http://192.168.1.217:8088/datacenter-dataview-web/json/Student_studentData_studentAgeCountInfo.json?OUName=学前教育' + Math.random()
+        ).then(function (data) {
+            console.log(data);
+        })
+      },
       updated:function(){
           console.log("改变了");
       },
