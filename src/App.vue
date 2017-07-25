@@ -111,30 +111,27 @@
 </template>
 
 <script>
-  import router from './router/index.js'
-  import menuConfig from './config/menu.config.json'
+  import router from './router/index.js'//引入路由配置，没啥卵用
+  import menuConfig from './config/menu.config.json'//遍历菜单
   export default {
       data:function(){
           return {
             menus:menuConfig.menus,
-            openMenuItem:[menuConfig.menus.All.name],
-            activeMenuItem:menuConfig.menus.All.memuitem[0].name
+            openMenuItem:[this.$route.name],//根据路由名字展开菜单
+            activeMenuItem:this.$route.path//根据路由设置选中的菜单
           }
       },
       mounted:function(){
-          console.log("jinlaile ++++++++++")
-        this.$http.get('http://192.168.1.217:8088/datacenter-dataview-web/json/Student_studentData_studentAgeCountInfo.json?OUName=学前教育' + Math.random()
+        /*this.$http.get('http://192.168.1.217:8088/datacenter-dataview-web/json/Student_studentData_studentAgeCountInfo.json?OUName=学前教育' + Math.random()
         ).then(function (data) {
             console.log(data);
-        })
-      },
-      updated:function(){
-          console.log("改变了");
+        })*/
       },
       methods:{
+        //点击后进行路由跳转
         gorouter:function(name){
             if(name!=null){
-              this.router_path=name;
+              //this.router_path=name;先注掉，估计没卵用
               router.push(name);
             }
         }

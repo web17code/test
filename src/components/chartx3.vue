@@ -33,7 +33,7 @@
 
 <template>
     <div class="chatsConent Sshadow">
-      <div :class="chartTitleClass">图表标题</div>
+      <div :class="chartTitleClass">{{ctitle}}</div>
       <div :id="id" :option="option" class="chatBaseStyle"></div>
     </div>
 </template>
@@ -50,6 +50,9 @@
             type:Object
         },
         chartTitleClass:{
+            type:String
+        },
+        ctitle:{
             type:String
         }
       },

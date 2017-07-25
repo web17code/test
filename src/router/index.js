@@ -9,17 +9,17 @@ var router = new Router({
   routes: [
     {
       path:'/',
-      name:'Allele',
+      name:'All',
       component:All1page
     },
     {
       path:'/All/All',
-      name:'Allele',
+      name:'All',
       component:All1page
     },
     {
       path:'/organ/All',
-      name:'Allele2',
+      name:'organ',
       component:orgAllPage
     }
   ]
