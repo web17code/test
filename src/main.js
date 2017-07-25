@@ -8,8 +8,10 @@ import  VueResource  from 'vue-resource';
 import iView from 'iview';//引入iveiwui框架
 import 'iview/dist/styles/iview.css';//引入iveiwui框架
 import './assets/common.css';
+import utils from "./utils/utils.js";
 
 Vue.config.productionTip = false;
+Vue.prototype.utils =utils;
 Vue.use(iView);//注册iveiwui框架
 Vue.use(VueResource);//注册VueResource组件
 

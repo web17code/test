@@ -102,7 +102,6 @@
   import chartx3 from "../components/chartx3.vue"//Highcharts架子
   import headDataShow from "../components/headDataShow.vue"
   import options from "../config/highcharts.config.js"
-  import utils from "../utils/utils"
   export default {
     name:"app",
     data: function () {
