@@ -78,6 +78,7 @@
         <a href="#">帮助中心</a> |
         <a href="#">安全中心</a> |
         <a href="#">服务大厅</a>
+        <button @click="showUrl">123132132</button>
       </div>
     </div>
     <Row type="flex" class-name="dataview">
@@ -93,9 +94,9 @@
               <Icon :type="menu.icon"></Icon>
               {{menu.title}}
             </template>
-            <Menu-item  v-for="submenu in menu.memuitem"
-                        :key="submenu.name"
-                        :name="submenu.name">{{submenu.text}}</Menu-item>
+            <Menu-item  v-for="(submenu,key) in menu.memuitem"
+                        :key="key"
+                        :name="key">{{submenu.text}}</Menu-item>
           </Submenu>
         </Menu>
       </i-col>
@@ -118,7 +119,7 @@
           return {
             menus:menuConfig.menus,
             openMenuItem:[this.$route.name],//根据路由名字展开菜单
-            activeMenuItem:this.$route.path//根据路由设置选中的菜单
+            activeMenuItem:this.$route.path,//根据路由设置选中的菜单
           }
       },
       mounted:function(){
@@ -129,11 +130,15 @@
       },
       methods:{
         //点击后进行路由跳转
-        gorouter:function(name){
+        gorouter:function(){
             if(name!=null){
               //this.router_path=name;先注掉，估计没卵用
-              router.push(name);
+              router.push(name+"?param=炸了");
             }
+        },
+        showUrl:function(){
+            console.log(this.$route.path);
+            console.log(this.$route.query.param);
         }
       }
   }

@@ -125,7 +125,6 @@
         now.isshow=!now.isshow;
       }
     },
-
     mounted:function(){
         this.rstu.isshow=false;
     },
