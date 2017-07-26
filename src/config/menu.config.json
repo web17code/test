@@ -1,29 +1,112 @@
 {
-  "menus":{
-    "All":{
-      "name":"All",
-      "title":"区情概览",
-      "icon":"ios-navigate",
-      "memuitem":{"/All":{"text":"总览项目","name":"/All"}}
+  "menus": {
+    "All": {
+      "name": "All",
+      "title": "区情概览",
+      "icon": "ios-navigate",
+      "memuitem": {
+        "/All": {
+          "text": "总览项目",
+          "name": "/All"
+        }
+      }
     },
-    "organ":{
-      "name":"organ",
-      "title":"机构信息",
-      "icon":"ios-keypad",
-      "memuitem":{
-        "/organ_All":{"text":"全区","name":"/organ_All"},
-        "/organ_preschoolEdu":{"text":"学前教育","name":"/organ_preschoolEdu"},
-        "/organ_primaryschool":{"text":"小学","name":"/organ_primaryschool"},
-        "/organ_middleschool":{"text":"中学","name":"/organ_middleschool"}}
+    "organ": {
+      "name": "organ",
+      "title": "机构信息",
+      "icon": "ios-keypad",
+      "memuitem": {
+        "/organ_All": {
+          "text": "全区",
+          "name": "/organ_All"
+        },
+        "/organ_preschoolEdu": {
+          "text": "学前教育",
+          "name": "/organ_preschoolEdu"
+        },
+        "/organ_primaryschool": {
+          "text": "小学",
+          "name": "/organ_primaryschool"
+        },
+        "/organ_middleschool": {
+          "text": "中学",
+          "name": "/organ_middleschool"
+        },
+        "/organ_nineYear": {
+          "text": "九年一贯制",
+          "name": "/organ_nineYear"
+        },
+        "/organ_specialEdu": {
+          "text": "特殊教育",
+          "name": "/organ_specialEdu"
+        },
+        "/organ_ZZCX": {
+          "text": "中职成校",
+          "name": "/organ_ZZCX"
+        },
+        "/organ_otherOrg": {
+          "text": "其他单位",
+          "name": "/organ_otherOrg"
+        },
+        "/organ_relevantOrg": {
+          "text": "相关机构",
+          "name": "/organ_relevantOrg"
+        },
+        "/organ_privateEdu": {
+          "text": "纳民小学（民办教育）",
+          "name": "/organ_privateEdu"
+        },
+        "/organ_privateNineEdu": {
+          "text": "民办九年制",
+          "name": "/organ_privateNineEdu"
+        },
+        "/organ_nonGovernmentalEdu": {
+          "text": "民非学校",
+          "name": "/organ_nonGovernmentalEdu"
+        },
+        "/organ_privateSpecialEdu": {
+          "text": "民办特教",
+          "name": "/organ_privateSpecialEdu"
+        },
+        "/organ_privatePreEdu": {
+          "text": "民办早教",
+          "name": "/organ_privatePreEdu"
+        },
+        "/organ_privateKindergarten": {
+          "text": "民办幼儿园",
+          "name": "/organ_privateKindergarten"
+        }
+      }
     },
-    "person":{
-      "name":"person",
-      "title":"区情概览",
-      "icon":"person-stalker",
-      "memuitem":{
-        "/person_publicTeach":{"text":"公办教职工","name":"/person_publicTeach"},
-        "/person_privateTeach":{"text":"民办教职工","name":"/person_privateTeach"},
-        "/person_publicStudent":{"text":"公办在校学生","name":"/person_publicStudent"}
+    "person": {
+      "name": "person",
+      "title": "人员信息",
+      "icon": "person-stalker",
+      "memuitem": {
+        "/person_publicTeach": {
+          "text": "公办教职工",
+          "name": "/person_publicTeach"
+        },
+        "/person_privateTeach": {
+          "text": "民办教职工",
+          "name": "/person_privateTeach"
+        },
+        "/person_publicStudent": {
+          "text": "公办在校学生",
+          "name": "/person_publicStudent"
+        },
+        "/person_privateStudent": {
+          "text": "民办在校学生",
+          "name": "/person_privateStudent"
+        },
+        "/person_temporary": {
+          "text": "临时工",
+          "name": "/person_temporary"
+        },
+        "/person_substitute": {
+          "text": "代课教师",
+          "name": "/person_substitute"
+        }
       }
     }
   }

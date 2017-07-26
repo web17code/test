@@ -78,7 +78,6 @@
         <a href="#">帮助中心</a> |
         <a href="#">安全中心</a> |
         <a href="#">服务大厅</a>
-        <button @click="showUrl">123132132</button>
       </div>
     </div>
     <Row type="flex" class-name="dataview">
@@ -118,7 +117,7 @@
       data:function(){
           return {
             menus:menuConfig.menus,
-            openMenuItem:[this.$route.name],//根据路由名字展开菜单
+            openMenuItem:[this.$route.name[0]],//根据路由名字展开菜单
             activeMenuItem:this.$route.path,//根据路由设置选中的菜单
           }
       },
@@ -130,16 +129,15 @@
       },
       methods:{
         //点击后进行路由跳转
-        gorouter:function(){
+        gorouter:function(name){
             if(name!=null){
               //this.router_path=name;先注掉，估计没卵用
-              router.push(name+"?param=炸了");
+              //如果你没配置路由，会出现卡（qia）住的现象
+              //var param = (this.$route.name)?this.$route.name[1]:"";
+              //router.push(name+"?param="+param);
+              router.push(name);
             }
         },
-        showUrl:function(){
-            console.log(this.$route.path);
-            console.log(this.$route.query.param);
-        }
       }
   }
 </script>

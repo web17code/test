@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import All1page from '../view/All1page.vue'
 import orgAllPage from '../view/orgAllPage.vue'
+import orgResetPage from  '../view/orgResetPage.vue'
+import page404 from "../view/404.vue"
+
 
 Vue.use(Router)
 
@@ -9,31 +12,127 @@ var router = new Router({
   routes: [
     {
       path:'/',
-      name:'All',
+      name:['index',"总览",'pk'],
       component:All1page,
-      query:{"param":"总览"}
     },
     {
       path:'/All',
-      name:'All',
+      name:['All',"也是总览"],
       component:All1page,
-      query:{"param":"也是总览"}
     },
     //机构的路由
     {
       path:'/organ_All/',
-      name:'organ',
-      component:orgAllPage,
-      query:{"param":"机构总览"}
+      name:['organ','全区'],
+      component:orgAllPage
     },
     {
       path:'/organ_preschoolEdu',
-      name:'organ',
-      component:orgAllPage,
-      query:{"param":"学前教育"}
+      name:['organ','学前教育'],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_primaryschool',
+      name:['organ',"小学"],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_middleschool',
+      name:['organ',"中学"],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_nineYear',
+      name:['organ',"九年一贯制"],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_specialEdu',
+      name:['organ',"特殊教育"],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_ZZCX',
+      name:['organ',"中职成校"],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_otherOrg',
+      name:['organ',"其他单位"],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_relevantOrg',
+      name:['organ',"相关机构"],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_privateEdu',
+      name:['organ',"纳民小学"],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_privateNineEdu',
+      name:['organ',"民办九年制"],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_nonGovernmentalEdu',
+      name:['organ',"民非学校"],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_privateSpecialEdu',
+      name:['organ',"民办特教"],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_privatePreEdu',
+      name:['organ',"民办早教"],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_privateKindergarten',
+      name:['organ',"民办幼儿园"],
+      component:orgResetPage
+    },
+    //人员信息的路由
+    {
+      path:'/person_publicTeach',
+      name:['person',"公办教职工"],
+      component:orgAllPage
+    },
+    {
+      path:'/person_privateTeach',
+      name:['person',"民办教职工"],
+      component:orgAllPage
+    },
+    {
+      path:'/person_publicStudent',
+      name:['person',"公办在校学生"],
+      component:orgAllPage
+    },
+    {
+      path:'/person_privateStudent',
+      name:['person',"民办在校学生"],
+      component:orgAllPage
+    },
+    {
+      path:'/person_temporary',
+      name:['person',"临时工"],
+      component:orgAllPage
+    },
+    {
+      path:'/person_substitute',
+      name:['person',"代课教师"],
+      component:orgAllPage
+    },
+    //没有找到路由的情况
+    {
+      path:'/*',
+      name:['other',"404"],
+      component:page404
     }
-
-    //
   ]
 })
 export default router;
