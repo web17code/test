@@ -16,65 +16,53 @@
       "title": "机构信息",
       "icon": "ios-keypad",
       "memuitem": {
-        "/organ_All": {
-          "text": "全区",
-          "name": "/organ_All"
+        "/organ_primaryschool": {
+          "text": "小学",
+          "name": "/organ_primaryschool"
+        },
+        "/organ_initialmiddleschool": {
+          "text": "初级中学",
+          "name": "/organ_initialmiddleschool"
+        },
+        "/organ_middleschool": {
+          "text": "普通中学(含完中、高中和综合高中)",
+          "name": "/organ_middleschool"
+        },
+        "/organ_nineYear": {
+          "text": "一贯制学校",
+          "name": "/organ_nineYear"
         },
         "/organ_preschoolEdu": {
           "text": "学前教育",
           "name": "/organ_preschoolEdu"
         },
-        "/organ_primaryschool": {
-          "text": "小学",
-          "name": "/organ_primaryschool"
-        },
-        "/organ_middleschool": {
-          "text": "中学",
-          "name": "/organ_middleschool"
-        },
-        "/organ_nineYear": {
-          "text": "九年一贯制",
-          "name": "/organ_nineYear"
-        },
         "/organ_specialEdu": {
           "text": "特殊教育",
           "name": "/organ_specialEdu"
         },
-        "/organ_ZZCX": {
-          "text": "中职成校",
-          "name": "/organ_ZZCX"
+        "/organ_ZZZY": {
+          "text": "中专或职业教育",
+          "name": "/organ_ZZZY"
+        },
+        "/organ_adultSchool": {
+          "text": "成校",
+          "name": "/organ_adultSchool"
         },
         "/organ_otherOrg": {
-          "text": "其他单位",
+          "text": "其它",
           "name": "/organ_otherOrg"
         },
-        "/organ_relevantOrg": {
-          "text": "相关机构",
-          "name": "/organ_relevantOrg"
+        "/organ_BexampleMidschool": {
+          "text": "区属示范性实验中学",
+          "name": "/organ_BexampleMidschool"
         },
-        "/organ_privateEdu": {
-          "text": "纳民小学（民办教育）",
-          "name": "/organ_privateEdu"
+        "/organ_CexampleMidschool": {
+          "text": "市属示范性实验中学",
+          "name": "/organ_CexampleMidschool"
         },
-        "/organ_privateNineEdu": {
-          "text": "民办九年制",
-          "name": "/organ_privateNineEdu"
-        },
-        "/organ_nonGovernmentalEdu": {
-          "text": "民非学校",
-          "name": "/organ_nonGovernmentalEdu"
-        },
-        "/organ_privateSpecialEdu": {
-          "text": "民办特教",
-          "name": "/organ_privateSpecialEdu"
-        },
-        "/organ_privatePreEdu": {
-          "text": "民办早教",
-          "name": "/organ_privatePreEdu"
-        },
-        "/organ_privateKindergarten": {
-          "text": "民办幼儿园",
-          "name": "/organ_privateKindergarten"
+        "/organ_managementUnit": {
+          "text": "管理单位",
+          "name": "/organ_managementUnit"
         }
       }
     },

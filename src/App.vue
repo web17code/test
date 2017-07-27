@@ -101,9 +101,9 @@
       </i-col>
       <!--内容区-->
       <i-col span="20">
-        <router-view></router-view>
+        <router-view v-if="isnew"></router-view>
         <div class="layout-copy">
-          2011-2016 &copy; TalkingData
+          2012-2017 &copy; 谆享教育
         </div>
       </i-col>
     </Row>
@@ -119,6 +119,7 @@
             menus:menuConfig.menus,
             openMenuItem:[this.$route.name[0]],//根据路由名字展开菜单
             activeMenuItem:this.$route.path,//根据路由设置选中的菜单
+            isnew:true
           }
       },
       mounted:function(){
@@ -131,13 +132,15 @@
         //点击后进行路由跳转
         gorouter:function(name){
             if(name!=null){
+              this.isnew=false;//销毁组件
+              this.$nextTick(function(){this.isnew=true})//重建组件
               //this.router_path=name;先注掉，估计没卵用
               //如果你没配置路由，会出现卡（qia）住的现象
               //var param = (this.$route.name)?this.$route.name[1]:"";
               //router.push(name+"?param="+param);
               router.push(name);
             }
-        },
+        }
       }
   }
 </script>

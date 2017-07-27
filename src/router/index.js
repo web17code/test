@@ -17,51 +17,71 @@ var router = new Router({
     },
     {
       path:'/All',
-      name:['All',"也是总览"],
+      name:['All',"总览"],
       component:All1page,
     },
     //机构的路由
     {
-      path:'/organ_All/',
-      name:['organ','全区'],
-      component:orgAllPage
-    },
-    {
       path:'/organ_preschoolEdu',
-      name:['organ','学前教育'],
-      component:orgResetPage
+      name:['organ','学前教育',"000000XXLB2011031019023910359066098"],
+      component:orgResetPage,
     },
     {
       path:'/organ_primaryschool',
-      name:['organ',"小学"],
-      component:orgResetPage
+      name:['organ',"小学","000000XXLB2010040908555473453211604"],
+      component:orgResetPage,
+    },
+    {
+      path:'/organ_initialmiddleschool',
+      name:['organ',"初级中学","000000XXLB2012090113413603212072509"],
+      component:orgResetPage,
     },
     {
       path:'/organ_middleschool',
-      name:['organ',"中学"],
-      component:orgResetPage
+      name:['organ',"普通中学","000000XXLB2012090113414886559543145"],
+      component:orgResetPage,
     },
     {
       path:'/organ_nineYear',
-      name:['organ',"九年一贯制"],
-      component:orgResetPage
+      name:['organ',"一贯制学校","000000XXLB2010040908555473464879467"],
+      component:orgResetPage,
     },
     {
       path:'/organ_specialEdu',
-      name:['organ',"特殊教育"],
+      name:['organ',"特殊教育","000000XXLB2013011810072157046833283"],
+      component:orgResetPage,
+    },
+    {
+      path:'/organ_ZZZY',
+      name:['organ',"中专或职业教育","000000XXLB2010040908555473470484017"],
       component:orgResetPage
     },
     {
-      path:'/organ_ZZCX',
-      name:['organ',"中职成校"],
+      path:'/organ_adultSchool',
+      name:['organ',"成校","000000XXLB2012090113420140919632981"],
       component:orgResetPage
     },
     {
       path:'/organ_otherOrg',
-      name:['organ',"其他单位"],
+      name:['organ',"其它","8c1980ffdb804f7286b10a7fca945d68"],
       component:orgResetPage
     },
     {
+      path:'/organ_BexampleMidschool',
+      name:['organ',"区属示范性实验中学","000000XXLB2013011819095672281478518"],
+      component:orgResetPage
+    },
+    {
+      path:'/organ_CexampleMidschool',
+      name:['organ',"市属示范性实验中学","000000XXLB2013011819095671377554156"],
+      component:orgResetPage,
+    },
+    {
+      path:'/organ_managementUnit',
+      name:['organ',"管理单位","0ace878d4854452096f31aa691e774ee"],
+      component:orgResetPage
+    },
+    /*{
       path:'/organ_relevantOrg',
       name:['organ',"相关机构"],
       component:orgResetPage
@@ -95,7 +115,7 @@ var router = new Router({
       path:'/organ_privateKindergarten',
       name:['organ',"民办幼儿园"],
       component:orgResetPage
-    },
+    },*/
     //人员信息的路由
     {
       path:'/person_publicTeach',

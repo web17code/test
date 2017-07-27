@@ -23,7 +23,7 @@
         <Row type="flex" class="code-row-bg">
           <Col span="8" class="Pshadow">
           <chartx3 id="pie_1"
-                   :option="option_bar1"
+                   :option="option_stackingBar"
                    :chartTitleClass="'chatTitle_blue'"
                    :ctitle="ctitle.stutitle1"></chartx3>
           </Col>
@@ -64,7 +64,7 @@
         <Row type="flex"  class="code-row-bg">
           <Col span="8" class="Pshadow">
           <chartx3 id="pie_2"
-                   :option="option_bar1"
+                   :option="option_stackingBar"
                    :ctitle="ctitle.tutortitle1"
                    :chartTitleClass="'chatTitle_red'"></chartx3>
           </Col>
@@ -115,16 +115,10 @@
     name:"app",
     data: function () {
       return {
-        "pie_1":"pie_1",
-        "pie_2":"pie_2",
-        "bar_1":"bar_1",
-        "bar_2":"bar_2",
-        "column_1":"column_1",
-        "column_2":"column_2",
         "option_bar":this.utils.deepCopy(options.bar),
-        "option_bar1":this.utils.deepCopy(options.stackingBar),
+        "option_stackingBar":this.utils.deepCopy(options.stackingBar),
         "option_column":this.utils.deepCopy(options.column),
-        "ctitle":options.ctitle,
+        "ctitle":options.ctitle,//表的主题数据
         "rstu":{"text":"查看更多","isshow":true},
         "rtutor":{"text":"查看更多","isshow":true}
       }
@@ -136,6 +130,7 @@
       }
     },
     mounted:function(){
+      //console.log(this.$route.name[1]);
       this.rstu.isshow=false;
       this.rtutor.isshow=false;
     },

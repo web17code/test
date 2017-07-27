@@ -23,7 +23,7 @@
         <Row type="flex" class="code-row-bg">
           <Col span="8" class="Pshadow">
           <chartx3 id="pie_1"
-                   :option="option_bar1"
+                   :option="option_stackingBar"
                    :chartTitleClass="'chatTitle_blue'"
                    :ctitle="ctitle.stutitle1"></chartx3>
           </Col>
@@ -41,20 +41,20 @@
           </Col>
         </Row>
         <transition name="fade">
-        <Row type="flex" class="code-row-bg" v-show="rstu.isshow">
-          <Col span="8" class="Pshadow">
-              <chartx3 id="column_1sss1"
-                       :option="option_column"
-                       :ctitle="ctitle.stutitle4"
-                       :chartTitleClass="'chatTitle_blue'"></chartx3>
-          </Col>
-          <Col span="8" class="Pshadow">
+          <Row type="flex" class="code-row-bg" v-show="rstu.isshow">
+            <Col span="8" class="Pshadow">
+            <chartx3 id="column_1sss1"
+                     :option="option_column"
+                     :ctitle="ctitle.stutitle4"
+                     :chartTitleClass="'chatTitle_blue'"></chartx3>
+            </Col>
+            <Col span="8" class="Pshadow">
             <chartx3 id="column_12"
                      :option="option_column"
                      :ctitle="ctitle.stutitle5"
                      :chartTitleClass="'chatTitle_blue'"></chartx3>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
         </transition>
         <Button large
                 @click="fold(rstu)"
@@ -64,7 +64,7 @@
         <Row type="flex"  class="code-row-bg">
           <Col span="8" class="Pshadow">
           <chartx3 id="pie_2"
-                   :option="option_bar1"
+                   :option="option_stackingBar"
                    :ctitle="ctitle.tutortitle1"
                    :chartTitleClass="'chatTitle_red'"></chartx3>
           </Col>
@@ -80,19 +80,28 @@
                    :ctitle="ctitle.tutortitle3"
                    :chartTitleClass="'chatTitle_red'"></chartx3>
           </Col>
-          <Col span="8" class="Pshadow">
-          <chartx3 id="column_21"
-                   :option="option_column"
-                   :ctitle="ctitle.tutortitle4"
-                   :chartTitleClass="'chatTitle_red'"></chartx3>
-          </Col>
-          <Col span="8" class="Pshadow">
-          <chartx3 id="column_22"
-                   :option="option_column"
-                   :ctitle="ctitle.tutortitle5"
-                   :chartTitleClass="'chatTitle_red'"></chartx3>
-          </Col>
         </Row>
+        <transition name="fade">
+          <Row type="flex"  class="code-row-bg" v-show="rtutor.isshow">
+            <Col span="8" class="Pshadow">
+            <chartx3 id="column_21"
+                     :option="option_column"
+                     :ctitle="ctitle.tutortitle4"
+                     :chartTitleClass="'chatTitle_red'"></chartx3>
+            </Col>
+            <Col span="8" class="Pshadow">
+            <chartx3 id="column_22"
+                     :option="option_column"
+                     :ctitle="ctitle.tutortitle5"
+                     :chartTitleClass="'chatTitle_red'"></chartx3>
+            </Col>
+          </Row>
+        </transition>
+        <Button large
+                @click="fold(rtutor)"
+                class="longButton">
+          {{rtutor.text}}
+        </Button>
       </div>
     </div>
   </div>
@@ -106,17 +115,12 @@
     name:"app",
     data: function () {
       return {
-        "pie_1":"pie_1",
-        "pie_2":"pie_2",
-        "bar_1":"bar_1",
-        "bar_2":"bar_2",
-        "column_1":"column_1",
-        "column_2":"column_2",
         "option_bar":this.utils.deepCopy(options.bar),
-        "option_bar1":this.utils.deepCopy(options.stackingBar),
+        "option_stackingBar":this.utils.deepCopy(options.stackingBar),
         "option_column":this.utils.deepCopy(options.column),
-        "ctitle":options.ctitle,
-        "rstu":{"text":"查看更多","isshow":true}
+        "ctitle":options.ctitle,//表的主题数据
+        "rstu":{"text":"查看更多","isshow":true},
+        "rtutor":{"text":"查看更多","isshow":true}
       }
     },
     methods:{
@@ -126,7 +130,9 @@
       }
     },
     mounted:function(){
-        this.rstu.isshow=false;
+      //console.log(this.$route.name[1]);
+      this.rstu.isshow=false;
+      this.rtutor.isshow=false;
     },
     components:{
       chartx3:chartx3,
