@@ -1,4 +1,13 @@
 <style scoped>
+  .chartTitle{
+    border-bottom: 2px solid #E6E9ED;
+    padding: 1px 17px 6px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 10px;
+    color: grey;
+  }
   .chartCollapse{
     text-align: center;
   }
@@ -20,22 +29,29 @@
     <headdatashow></headdatashow>
     <div class="layout-content">
       <div class="layout-content-main">
+        <p class="chartTitle">学生信息</p>
         <Row type="flex" class="code-row-bg">
           <Col span="8" class="Pshadow">
-          <chartx3 id="pie_1"
-                   :option="option_stackingBar"
+          <!--学生图表1pie-->
+          <chartx3 id="stu1_pie"
+                   :option="stu1_pie"
+                   :getchartUrl="stu1_pie_url"
                    :chartTitleClass="'chatTitle_blue'"
                    :ctitle="ctitle.stutitle1"></chartx3>
           </Col>
           <Col span="8" class="Pshadow">
-          <chartx3 id="bar_1"
-                   :option="option_bar"
-                   :ctitle="ctitle.stutitle2"
-                   :chartTitleClass="'chatTitle_blue'"></chartx3>
+          <!--学生图表2 bar式叠加-->
+          <chartx3 id="stu2_stackingBar"
+                               :option="stu2_stackingBar"
+                               :getchartUrl="stu2_stackingBar_url"
+                               :ctitle="ctitle.stutitle2"
+                               :chartTitleClass="'chatTitle_blue'"></chartx3>
           </Col>
+          <!--学生图表3pie-->
           <Col span="8" class="Pshadow">
-          <chartx3 id="column_1"
-                   :option="option_column"
+          <chartx3 id="stu3_pie"
+                   :option="stu3_pie"
+                   :getchartUrl="stu3_pie_url"
                    :ctitle="ctitle.stutitle3"
                    :chartTitleClass="'chatTitle_blue'"></chartx3>
           </Col>
@@ -43,17 +59,19 @@
         <transition name="fade">
           <Row type="flex" class="code-row-bg" v-show="rstu.isshow">
             <Col span="8" class="Pshadow">
-            <chartx3 id="column_1sss1"
-                     :option="option_column"
+            <chartx3 id="stu4_column"
+                     :option="stu4_column"
                      :ctitle="ctitle.stutitle4"
+                     :getchartUrl="stu4_column_url"
                      :chartTitleClass="'chatTitle_blue'"></chartx3>
             </Col>
-            <Col span="8" class="Pshadow">
-            <chartx3 id="column_12"
-                     :option="option_column"
+            <!--<Col span="8" class="Pshadow">
+            <chartx3 id="stu5_pie"
+                     :option="stu1_pie"
                      :ctitle="ctitle.stutitle5"
+                     :getchartUrl="stu1_pie_url"
                      :chartTitleClass="'chatTitle_blue'"></chartx3>
-            </Col>
+            </Col>-->
           </Row>
         </transition>
         <Button large
@@ -61,6 +79,7 @@
                 class="longButton">
           {{rstu.text}}
         </Button>
+        <!--
         <Row type="flex"  class="code-row-bg">
           <Col span="8" class="Pshadow">
           <chartx3 id="pie_2"
@@ -102,25 +121,33 @@
                 class="longButton">
           {{rtutor.text}}
         </Button>
+        -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import chartx3 from "../components/chartx3.vue"//Highcharts架子
-  import headDataShow from "../components/headDataShow.vue"
-  import options from "../config/highcharts.config.js"
+  import headDataShow from "../components/headDataShow.vue"//头部数字组件
+  import options from "../config/highcharts.config.js"//表格基本配置
+  import chartx3 from "../components/chartx3.vue"//Highcharts基本架子
   export default {
     name:"app",
     data: function () {
       return {
-        "option_bar":this.utils.deepCopy(options.bar),
-        "option_stackingBar":this.utils.deepCopy(options.stackingBar),
-        "option_column":this.utils.deepCopy(options.column),
-        "ctitle":options.ctitle,//表的主题数据
         "rstu":{"text":"查看更多","isshow":true},
-        "rtutor":{"text":"查看更多","isshow":true}
+        "rtutor":{"text":"查看更多","isshow":true},
+        "ctitle":options.ctitle,//图表的标题
+        //图标基本数据
+        "stu1_pie":this.utils.deepCopy(options.pie),
+        "stu2_stackingBar":this.utils.deepCopy(options.stackingBar),
+        "stu3_pie":this.utils.deepCopy(options.pie),
+        "stu4_column":this.utils.deepCopy(options.column),
+        //图表获取数据的路径
+        "stu1_pie_url":window.getHost+"json/Student_studentData_studentHJCountInfo.json?OUName="+this.$route.name[1],
+        "stu2_stackingBar_url":window.getHost+"json/Student_ageData_studentAgeCountInfo.json?OUName="+this.$route.name[1]+"&small_age="+this.$route.name[3]+"&large_age="+this.$route.name[4],
+        "stu3_pie_url":window.getHost+"json/Student_studentData_studentAgeCountInfo.json?OUName="+this.$route.name[1]+"&small_age="+this.$route.name[3]+"&large_age="+this.$route.name[4],
+        "stu4_column_url":window.getHost+"json/Student_studentData_studentSexCountInfo.json?OUName="+this.$route.name[1]
       }
     },
     methods:{

@@ -3,10 +3,10 @@
  */
 var options = {
   "ctitle":{
-    stutitle1:"机构数据",
-    stutitle2:"户籍分布数据",
+    stutitle1:"户籍分布数据",
+    stutitle2:"学生不同性别年龄分布统计",
     stutitle3:"学生年龄分布统计",
-    stutitle4:"学生不同性别年龄分布统计",
+    stutitle4:"学生性别分布统计",
     stutitle5:"学生性别分布统计",
     tutortitle1:"职称",
     tutortitle2:"年龄分布",
@@ -95,9 +95,9 @@ var options = {
       categories: ['苹果', '香蕉', '橙子'] //指定x轴分组
     },
     yAxis: {
-      min:0,
+      /*min:0,*/
       title: {
-        text: '吃水果个数'                //指定y轴的标题
+        text: ''               //指定y轴的标题
       }
     },
     series: [{
@@ -109,6 +109,41 @@ var options = {
     },{
       name: '小华',
       data: [5, 7, 3]
+    }],
+    credits: {                //去掉hightcharts水印
+      enabled:false
+    }
+  },
+  //基本饼图配置
+  pie:{
+    title: {
+      text:"标题",
+      useHTML:true,
+      style:{display:"none"}
+    },
+    tooltip: {
+      headerFormat: '{series.name}<br>',
+      //pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+      pointFormatter: function(){return this.series.name+"<b>"+(this.y*100).toFixed(2)+"%</b><br/>"}
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: false
+        },
+        showInLegend: true
+      }
+    },
+    series: [{
+      type: 'pie',
+      name: '数据分布',
+      data: [
+        ['Firefox',   55.0],
+        ['IE',       26.8],
+
+      ]
     }],
     credits: {                //去掉hightcharts水印
       enabled:false
