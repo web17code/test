@@ -14,7 +14,7 @@ Vue.config.productionTip = false;
 Vue.prototype.utils =utils;
 Vue.use(iView);//注册iveiwui框架
 Vue.use(VueResource);//注册VueResource组件
-
+window.getHost="http://192.168.1.217:8088/datacenter-dataview-web/";//设置本项目的上下文
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start();
   next();
