@@ -58,6 +58,7 @@
         </Row>
         <transition name="fade">
           <Row type="flex" class="code-row-bg" v-show="rstu.isshow">
+            <!--学生图表4column-->
             <Col span="8" class="Pshadow">
             <chartx3 id="stu4_column"
                      :option="stu4_column"
@@ -79,23 +80,29 @@
                 class="longButton">
           {{rstu.text}}
         </Button>
-        <!--
+        <p class="chartTitle"style="margin-top:30px;">教职工信息</p>
         <Row type="flex"  class="code-row-bg">
           <Col span="8" class="Pshadow">
-          <chartx3 id="pie_2"
-                   :option="option_stackingBar"
+          <!--教师1pie-->
+          <chartx3 id="tutor1_pie"
+                   :option="tutor1_pie"
+                   :getchartUrl="tutor1_pie_url"
                    :ctitle="ctitle.tutortitle1"
                    :chartTitleClass="'chatTitle_red'"></chartx3>
           </Col>
           <Col span="8" class="Pshadow">
-          <chartx3 id="bar_2"
-                   :option="option_bar"
-                   :ctitle="ctitle.tutortitle2"
-                   :chartTitleClass="'chatTitle_red'"></chartx3>
+            <!--教师2堆叠条形图-->
+            <chartx3 id="tutor2_minusBar"
+                     :option="tutor2_minusBar"
+                     :getchartUrl="tutor2_minusBar_url"
+                     :ctitle="ctitle.tutortitle2"
+                     :chartTitleClass="'chatTitle_red'"></chartx3>
           </Col>
           <Col span="8" class="Pshadow">
-          <chartx3 id="column_2"
-                   :option="option_column"
+          <!--教师3饼图-->
+          <chartx3 id="tutor3_pie"
+                   :option="tutor3_pie"
+                   :getchartUrl="tutor3_pie_url"
                    :ctitle="ctitle.tutortitle3"
                    :chartTitleClass="'chatTitle_red'"></chartx3>
           </Col>
@@ -103,15 +110,11 @@
         <transition name="fade">
           <Row type="flex"  class="code-row-bg" v-show="rtutor.isshow">
             <Col span="8" class="Pshadow">
-            <chartx3 id="column_21"
-                     :option="option_column"
+            <!--教师图表4column-->
+            <chartx3 id="tutor4_column"
+                     :option="tutor4_column"
+                     :getchartUrl="tutor4_column_url"
                      :ctitle="ctitle.tutortitle4"
-                     :chartTitleClass="'chatTitle_red'"></chartx3>
-            </Col>
-            <Col span="8" class="Pshadow">
-            <chartx3 id="column_22"
-                     :option="option_column"
-                     :ctitle="ctitle.tutortitle5"
                      :chartTitleClass="'chatTitle_red'"></chartx3>
             </Col>
           </Row>
@@ -121,7 +124,6 @@
                 class="longButton">
           {{rtutor.text}}
         </Button>
-        -->
       </div>
     </div>
   </div>
@@ -143,11 +145,19 @@
         "stu2_stackingBar":this.utils.deepCopy(options.stackingBar),
         "stu3_pie":this.utils.deepCopy(options.pie),
         "stu4_column":this.utils.deepCopy(options.column),
+        "tutor1_pie":this.utils.deepCopy(options.pie),
+        "tutor2_minusBar":this.utils.deepCopy(options.minusBar),
+        "tutor3_pie":this.utils.deepCopy(options.pie),
+        "tutor4_column":this.utils.deepCopy(options.column),
         //图表获取数据的路径
         "stu1_pie_url":window.getHost+"json/Student_studentData_studentHJCountInfo.json?OUName="+this.$route.name[1],
         "stu2_stackingBar_url":window.getHost+"json/Student_ageData_studentAgeCountInfo.json?OUName="+this.$route.name[1]+"&small_age="+this.$route.name[3]+"&large_age="+this.$route.name[4],
         "stu3_pie_url":window.getHost+"json/Student_studentData_studentAgeCountInfo.json?OUName="+this.$route.name[1]+"&small_age="+this.$route.name[3]+"&large_age="+this.$route.name[4],
-        "stu4_column_url":window.getHost+"json/Student_studentData_studentSexCountInfo.json?OUName="+this.$route.name[1]
+        "stu4_column_url":window.getHost+"json/Student_studentData_studentSexCountInfo.json?OUName="+this.$route.name[1],
+        "tutor1_pie_url":window.getHost+"json/Teacher_teacherData_teacherHJCount.json?OUName="+this.$route.name[1],
+        "tutor2_minusBar_url":window.getHost+"json/Teacher_teacherData_teacherSexAgeCount.json?OUName="+this.$route.name[1],
+        "tutor3_pie_url":window.getHost+"json/Teacher_teacherData_teacherSexCount.json?OUName="+this.$route.name[1],
+        "tutor4_column_url":window.getHost+"json/Teacher_teacherData_teacherLevelCount.json?OUName="+this.$route.name[1]
       }
     },
     methods:{

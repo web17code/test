@@ -43,7 +43,7 @@
       </Col>
       <Col span="6" class-name="dataItem">
         <p class="dataItem_name">学生总数</p>
-        <p class="dataItem_num" >{{headernum.teacherCount}}</p>
+        <p class="dataItem_num" >{{headernum.studentCount}}</p>
       </Col>
     </Row>
   </div>

@@ -48,9 +48,55 @@ function stu4_column(source,worked,route){
   worked.yAxis.title.text="人数";
   return worked;
 }
+function tutor1_pie(source,worked,route){
+  worked.series=[];//清空默认的数据
+  worked.series[0]={};
+  worked.series[0].name="户籍分布";
+  worked.series[0].type="pie";
+  worked.series[0].data=[];//清空默认的数据
+  worked.series[0].data[0]=["沪籍",source.hj_local_count/source.total];
+  worked.series[0].data[1]=["未分类",source.hj_other_count/source.total];
+  worked.series[0].data[2]=["非沪籍",source.hj_out_count/source.total];
+  return worked;
+}
+function tutor2_minusBar(source,worked,route){
+
+  worked.series = [];//清空数据
+  worked.series[0]={};
+  worked.series[0].name="男";
+  worked.series[0].data=[source.boy_age_large_count*-1,source.boy_age_between_count*-1,source.boy_age_small_count*-1,source.boy_age_null_count*-1];
+  worked.series[1]={};
+  worked.series[1].name="女";
+  worked.series[1].data=[source.girl_age_large_count,source.girl_age_between_count,source.girl_age_small_count,source.girl_age_null_count];
+  worked.xAxis[0].categories=["45岁以上","30-45岁","30岁以下","未分类"];//修改x轴显示
+  worked.xAxis[1].categories=["45岁以上","30-45岁","30岁以下","未分类"];//修改x轴显示
+  return worked;
+}
+function tutor3_pie(source,worked,route){
+  worked.series=[];//清空默认的数据
+  worked.series[0]={};
+  worked.series[0].name="性别比例";
+  worked.series[0].type="pie";
+  worked.series[0].data=[];//清空默认的数据
+  worked.series[0].data[0]=["男",source.boy_count/source.total];
+  worked.series[0].data[1]=["未分类",source.other_count/source.total];
+  worked.series[0].data[2]=["女",source.gril_count/source.total];
+  return worked;
+}
+function tutor4_column(source,worked,route){
+  worked.series=[];//清空默认的数据
+  worked.series[0]={name:"人数",data:[source.level_senior_count,source.level_one_count,source.level_two_count,source.level_three_count,source.level_other_count]};
+  worked.xAxis.categories=["高级教师","一级教师","二级教师","三级教师","其他"];
+  worked.yAxis.title.text="人数";
+  return worked;
+}
 var dataProcess={};
 dataProcess.stu1_pie = stu1_pie;
 dataProcess.stu2_stackingBar = stu2_stackingBar;
 dataProcess.stu3_pie = stu3_pie;
 dataProcess.stu4_column = stu4_column;
+dataProcess.tutor1_pie = tutor1_pie;
+dataProcess.tutor2_minusBar = tutor2_minusBar;
+dataProcess.tutor3_pie = tutor3_pie;
+dataProcess.tutor4_column = tutor4_column;
 export default dataProcess;
