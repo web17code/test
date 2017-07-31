@@ -74,7 +74,6 @@
 
 <script>
   import chartx3 from "../components/chartx3.vue"//Highcharts架子
-  import headDataShow from "../components/headDataShow.vue"
   import options from "../config/highcharts.config.js"
   import utils from "../utils/utils"
   import map1 from "../components/map1.vue"
@@ -98,7 +97,6 @@
     },
     components:{
       chartx3:chartx3,
-      headdatashow:headDataShow,
       mapp:map1
     },
     methods:{
