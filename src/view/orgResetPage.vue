@@ -26,7 +26,7 @@
 </style>
 <template>
   <div>
-    <headdatashow></headdatashow>
+    <headdatashowOrg></headdatashowOrg>
     <div class="layout-content">
       <div class="layout-content-main">
         <p class="chartTitle">学生信息</p>
@@ -130,7 +130,7 @@
 </template>
 
 <script>
-  import headDataShow from "../components/headDataShow.vue"//头部数字组件
+  import headDataShowOrg from "../components/headDataShowOrg.vue"//头部数字组件
   import options from "../config/highcharts.config.js"//表格基本配置
   import chartx3 from "../components/chartx3.vue"//Highcharts基本架子
   export default {
@@ -173,7 +173,7 @@
     },
     components:{
       chartx3:chartx3,
-      headdatashow:headDataShow
+      headdatashowOrg:headDataShowOrg
     }
   }
 </script>
