@@ -22,19 +22,19 @@
       <div class="layout-content-main">
         <Row type="flex" class="code-row-bg">
           <Col span="8" class="Pshadow">
-          <chartx3 id="pie_1"
+          <chartx3 id="stu1"
                    :option="option_stackingBar"
                    :chartTitleClass="'chatTitle_blue'"
                    :ctitle="ctitle.stutitle1"></chartx3>
           </Col>
           <Col span="8" class="Pshadow">
-          <chartx3 id="bar_1"
+          <chartx3 id="stu2"
                    :option="option_bar"
                    :ctitle="ctitle.stutitle2"
                    :chartTitleClass="'chatTitle_blue'"></chartx3>
           </Col>
           <Col span="8" class="Pshadow">
-          <chartx3 id="column_1"
+          <chartx3 id="stu3"
                    :option="option_column"
                    :ctitle="ctitle.stutitle3"
                    :chartTitleClass="'chatTitle_blue'"></chartx3>
@@ -43,13 +43,13 @@
         <transition name="fade">
           <Row type="flex" class="code-row-bg" v-show="rstu.isshow">
             <Col span="8" class="Pshadow">
-            <chartx3 id="column_1sss1"
+            <chartx3 id="stu4"
                      :option="option_column"
                      :ctitle="ctitle.stutitle4"
                      :chartTitleClass="'chatTitle_blue'"></chartx3>
             </Col>
             <Col span="8" class="Pshadow">
-            <chartx3 id="column_12"
+            <chartx3 id="stu5"
                      :option="option_column"
                      :ctitle="ctitle.stutitle5"
                      :chartTitleClass="'chatTitle_blue'"></chartx3>
@@ -130,7 +130,6 @@
       }
     },
     mounted:function(){
-      //console.log(this.$route.name[1]);
       this.rstu.isshow=false;
       this.rtutor.isshow=false;
     },
