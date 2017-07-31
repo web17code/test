@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import All1page from '../view/All1page.vue'
-import orgAllPage from '../view/orgAllPage.vue'
+import personInfoTutor from '../view/personInfoTutor.vue'
 import orgResetPage from  '../view/orgResetPage.vue'
 import page404 from "../view/404.vue"
 
@@ -23,74 +23,65 @@ var router = new Router({
     //机构的路由
     {
       path:'/organ_preschoolEdu',
-      name:['organ','学前教育',"000000XXLB2011031019023910359066098"],
+      name:['organ','学前教育',"D27C86EE280F4D6EA9E1B06752F66220",4,5],
       component:orgResetPage,
     },
     {
       path:'/organ_primaryschool',
-      name:['organ',"小学","000000XXLB2010040908555473453211604"],
+      name:['organ',"小学","B1B48027D18C4108BB567723D763034E",9,10],
       component:orgResetPage,
     },
     {
       path:'/organ_initialmiddleschool',
-      name:['organ',"初级中学","000000XXLB2012090113413603212072509"],
-      component:orgResetPage,
-    },
-    {
-      path:'/organ_middleschool',
-      name:['organ',"普通中学","000000XXLB2012090113414886559543145"],
+      name:['organ',"中学","F302FFEF8B364108BCD825D895D843BC",13,15],
       component:orgResetPage,
     },
     {
       path:'/organ_nineYear',
-      name:['organ',"一贯制学校","000000XXLB2010040908555473464879467"],
+      name:['organ',"一贯制","FD3F1B36E28349479F6817ECDEA273E3",11,13],
       component:orgResetPage,
     },
     {
       path:'/organ_specialEdu',
-      name:['organ',"特殊教育","000000XXLB2013011810072157046833283"],
+      name:['organ',"特殊教育","FE2673BFD8704E12A949C5B7EB940273",4,5],
       component:orgResetPage,
     },
     {
       path:'/organ_ZZZY',
-      name:['organ',"中专或职业教育","000000XXLB2010040908555473470484017"],
-      component:orgResetPage
-    },
-    {
-      path:'/organ_adultSchool',
-      name:['organ',"成校","000000XXLB2012090113420140919632981"],
+      name:['organ',"中职成校","F5EBC4EA7D3846419601AB3ACC70B94F	",18,23],
       component:orgResetPage
     },
     {
       path:'/organ_otherOrg',
-      name:['organ',"其它","8c1980ffdb804f7286b10a7fca945d68"],
+      name:['organ',"其他单位","8c1980ffdb804f7286b10a7fca945d68",4,5],
       component:orgResetPage
     },
     {
-      path:'/organ_BexampleMidschool',
-      name:['organ',"区属示范性实验中学","000000XXLB2013011819095672281478518"],
+      path:'/organ_relateOrg',
+      name:['organ',"相关机构","0ace878d4854452096f31aa691e774ee",4,5],
       component:orgResetPage
     },
     {
-      path:'/organ_CexampleMidschool',
-      name:['organ',"市属示范性实验中学","000000XXLB2013011819095671377554156"],
-      component:orgResetPage,
-    },
-    {
-      path:'/organ_managementUnit',
-      name:['organ',"管理单位","0ace878d4854452096f31aa691e774ee"],
+      path:'/organ_civilianOrg',
+      name:['organ',"民办教育","AB54DB4D3E63475FAB30DBCE4E29D564",5,6],
       component:orgResetPage
     },
+    /*线上使用纳民小学
+    {
+      path:'/organ_civilianOrg',
+      name:['organ',"纳民小学","AB54DB4D3E63475FAB30DBCE4E29D564",5,6],
+      component:orgResetPage
+    },*/
     /*{
       path:'/organ_relevantOrg',
       name:['organ',"相关机构"],
       component:orgResetPage
     },
     {
-      path:'/organ_privateEdu',
-      name:['organ',"纳民小学"],
-      component:orgResetPage
-    },
+     path:'/organ_adultSchool',
+     name:['organ',"成校","000000XXLB2012090113420140919632981",4,5],
+     component:orgResetPage
+     },
     {
       path:'/organ_privateNineEdu',
       name:['organ',"民办九年制"],
@@ -119,33 +110,33 @@ var router = new Router({
     //人员信息的路由
     {
       path:'/person_publicTeach',
-      name:['person',"公办教职工"],
-      component:orgAllPage
+      name:['person',"公办"],
+      component:personInfoTutor
     },
     {
       path:'/person_privateTeach',
-      name:['person',"民办教职工"],
-      component:orgAllPage
+      name:['person',"民办"],
+      component:personInfoTutor
     },
     {
       path:'/person_publicStudent',
-      name:['person',"公办在校学生"],
-      component:orgAllPage
+      name:['person',"公办"],
+      component:personInfoTutor
     },
     {
       path:'/person_privateStudent',
-      name:['person',"民办在校学生"],
-      component:orgAllPage
+      name:['person',"民办"],
+      component:personInfoTutor
     },
     {
       path:'/person_temporary',
       name:['person',"临时工"],
-      component:orgAllPage
+      component:personInfoTutor
     },
     {
       path:'/person_substitute',
       name:['person',"代课教师"],
-      component:orgAllPage
+      component:personInfoTutor
     },
     //没有找到路由的情况
     {

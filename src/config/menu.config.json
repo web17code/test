@@ -21,12 +21,8 @@
           "name": "/organ_primaryschool"
         },
         "/organ_initialmiddleschool": {
-          "text": "初级中学",
+          "text": "中学",
           "name": "/organ_initialmiddleschool"
-        },
-        "/organ_middleschool": {
-          "text": "普通中学(含完中、高中和综合高中)",
-          "name": "/organ_middleschool"
         },
         "/organ_nineYear": {
           "text": "一贯制学校",
@@ -41,28 +37,20 @@
           "name": "/organ_specialEdu"
         },
         "/organ_ZZZY": {
-          "text": "中专或职业教育",
+          "text": "中职成校",
           "name": "/organ_ZZZY"
         },
-        "/organ_adultSchool": {
-          "text": "成校",
-          "name": "/organ_adultSchool"
+        "/organ_civilianOrg": {
+          "text": "纳民小学",
+          "name": "/organ_civilianOrg"
         },
         "/organ_otherOrg": {
-          "text": "其它",
+          "text": "其他单位",
           "name": "/organ_otherOrg"
         },
-        "/organ_BexampleMidschool": {
-          "text": "区属示范性实验中学",
-          "name": "/organ_BexampleMidschool"
-        },
-        "/organ_CexampleMidschool": {
-          "text": "市属示范性实验中学",
-          "name": "/organ_CexampleMidschool"
-        },
-        "/organ_managementUnit": {
-          "text": "管理单位",
-          "name": "/organ_managementUnit"
+        "/organ_relateOrg": {
+          "text": "相关机构",
+          "name": "/organ_relateOrg"
         }
       }
     },
