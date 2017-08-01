@@ -3,6 +3,7 @@
  */
 var options = {
   "ctitle":{
+    //机构信息页的标题
     stutitle1:"户籍分布数据",
     stutitle2:"学生不同性别年龄分布统计",
     stutitle3:"学生年龄分布统计",
@@ -12,7 +13,17 @@ var options = {
     tutortitle2:"年龄分布",
     tutortitle3:"男女比例",
     tutortitle4:"教师职称统计",
-    tutortitle5:"待定5"
+    tutortitle5:"待定5",
+    //人员信息教师页的标题
+    personTutorTitle1:"教师最高学历统计",
+    personTutorTitle2:"教师最高学位统计",
+    //人员信息学生页的标题
+    personstuTitle1:"年级信息统计",
+    personstuTitle2:"学生户籍分布统计",
+    personstuTitle3:"学生户籍类型分布统计",
+    //人员信息临时工的标题
+    persontempTitle1:"临时工年龄分布统计",
+    persontempTitle2:"临时工性别分布统计"
   },
   //柱状图配置（横向）
   bar:{
@@ -53,6 +64,11 @@ var options = {
       text:"标题",
       useHTML:true,
       style:{display:"none"}
+    },
+    plotOptions: {
+      column: {
+        colorByPoint:false//默认单色,开启后多种色彩
+      }
     },
     xAxis: {
       categories: ['苹果', '香蕉', '橙子'] //指定x轴分组

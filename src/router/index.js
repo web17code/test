@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import All1page from '../view/All1page.vue'
-import personInfoTutor from '../view/personInfoTutor.vue'
-import orgResetPage from  '../view/orgResetPage.vue'
+import All1page from '../view/All1page.vue'//首页
+import personInfoTutor from '../view/personInfoTutor.vue'//人员信息教师的页面
+import personInfoStu from '../view/personInfostu.vue'//人员信息教师的页面
+import personInfoTemp from '../view/personInfotemp.vue'//人员信息临时工的页面
+import orgResetPage from  '../view/orgResetPage.vue'//机构信息的页面
 import page404 from "../view/404.vue"
 
 
@@ -110,33 +112,28 @@ var router = new Router({
     //人员信息的路由
     {
       path:'/person_publicTeach',
-      name:['person',"公办"],
+      name:['person',"公办","tutor"],
       component:personInfoTutor
     },
     {
       path:'/person_privateTeach',
-      name:['person',"民办"],
+      name:['person',"民办","tutor"],
       component:personInfoTutor
     },
     {
       path:'/person_publicStudent',
-      name:['person',"公办"],
-      component:personInfoTutor
+      name:['person',"公办","stu"],
+      component:personInfoStu
     },
     {
       path:'/person_privateStudent',
-      name:['person',"民办"],
-      component:personInfoTutor
+      name:['person',"民办","stu"],
+      component:personInfoStu
     },
     {
       path:'/person_temporary',
       name:['person',"临时工"],
-      component:personInfoTutor
-    },
-    {
-      path:'/person_substitute',
-      name:['person',"代课教师"],
-      component:personInfoTutor
+      component:personInfoTemp
     },
     //没有找到路由的情况
     {

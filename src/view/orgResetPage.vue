@@ -167,7 +167,6 @@
       }
     },
     mounted:function(){
-      //console.log(this.$route.name[1]);
       this.rstu.isshow=false;
       this.rtutor.isshow=false;
     },

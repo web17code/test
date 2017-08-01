@@ -19,7 +19,7 @@
     font-size: 14px;
   }
   .chatBaseStyle{
-    height: 260px;
+    height: 280px;
     padding-left:5px;
     padding-right:5px;
     padding-bottom:5px;

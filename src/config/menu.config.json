@@ -78,10 +78,6 @@
         "/person_temporary": {
           "text": "临时工",
           "name": "/person_temporary"
-        },
-        "/person_substitute": {
-          "text": "代课教师",
-          "name": "/person_substitute"
         }
       }
     }
