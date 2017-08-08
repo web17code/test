@@ -19,3 +19,6 @@ npm run build --report
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+# 更换环境的话需要修改zxdataview\config\index.js 的assetsPublicPath
+#                   zxdataview\src\main.js  的 window.getHost，这是请求接口的上下文配置
