@@ -74,10 +74,11 @@
     <!--吊顶部分-->
     <div class="layout-ceiling">
       <div class="layout-ceiling-main">
-        <a href="#">注册登录</a> |
+        <!--<a href="#">注册登录</a> |
         <a href="#">帮助中心</a> |
-        <a href="#">安全中心</a> |
-        <a href="#">服务大厅</a>
+        <a href="#">安全中心</a> |-->
+        <a href="javascript:void(0);">帮助中心</a> |
+        <a href="logout.jsp">注销登录</a>
       </div>
     </div>
     <Row type="flex" class-name="dataview">
@@ -119,13 +120,8 @@
             menus:menuConfig.menus,
             openMenuItem:[this.$route.name[0]],//根据路由名字展开菜单
             activeMenuItem:this.$route.path,//根据路由设置选中的菜单
-            isnew:true
+            isnew:true//销毁组件的一个变量
           }
-      },
-      mounted:function(){
-        /*this.$http.get('http://192.168.1.217:8088/datacenter-dataview-web/json/Student_studentData_studentAgeCountInfo.json?OUName=学前教育' + Math.random()
-        ).then(function (data) {
-        })*/
       },
       methods:{
         //点击后进行路由跳转
@@ -133,11 +129,7 @@
             if(name!=null){
               this.isnew=false;//销毁组件
               this.$nextTick(function(){this.isnew=true})//重建组件
-              //this.router_path=name;先注掉，估计没卵用
-              //如果你没配置路由，会出现卡（qia）住的现象
-              //var param = (this.$route.name)?this.$route.name[1]:"";
-              //router.push(name+"?param="+param);
-              router.push(name);
+              router.push(name);//路由跳转
             }
         }
       }

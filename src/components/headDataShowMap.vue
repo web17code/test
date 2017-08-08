@@ -1,5 +1,6 @@
   <style scoped>
   /**
+  * 该组件只在机构全区页面使用
   * Created by web17code on 2017/7/31.
   * getNumUrl传递数字的请求接口getNumUrl来自父组件
   * part表示每一块的大小来自父组件
@@ -69,11 +70,9 @@
     },
     mounted: function () {
       this.$http.get(
-          window.getHost+this.getNumUrl+this.$route.name[1]+'&r='+Math.random()//+
+          window.getHost+this.getNumUrl+'?r='+Math.random()//+
       ).then(function (data) {
-          if(data.data.code=="0000"){
-            this.headernum=data.data.data;
-          }
+            this.headernum=data.data[0];
       })
     }
   }

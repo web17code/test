@@ -20,19 +20,70 @@ div{
   height: 22px;
   background: url("../assets/img/icon.png") no-repeat;
 }
-.markerIcon1.xiaoxue{
-  height: 25px;
-  background-position: -23px -21px;
+/*1绿*/
+.markerIcon1.XQJY{
+  width: 12px;
+  height: 21px;
+  background-position: 0px 0px;
 }
-.markerIcon1.zhongxue{
+/*1蓝*/
+.markerIcon1.null{
+  width: 12px;
+  height: 21px;
+  background-position: -92px 0px;
+}
+/*1红*/
+.markerIcon1.ZZCX{
+  width: 12px;
+  height: 21px;
+  background-position: -46px 0px;
+}
+/*1橙*/
+.markerIcon1.wait{
   height: 25px;
   background-position: 0px -21px;
 }
-.markerIcon1.daxue{
+/*1紫*/
+.markerIcon1.TSJY{
+  width: 12px;
+  height: 21px;
+  background-position: -92px 0px;
+}
+/*1粉*/
+.markerIcon1.wait{
+  height: 25px;
+  background-position: 0px -21px;
+}
+/*2绿*/
+.markerIcon1.XX{
+  height: 25px;
+  background-position: 0px -21px;
+}
+/*2蓝*/
+.markerIcon1.ZX{
+  height: 25px;
+  background-position: -23px -21px;
+}
+/*2红*/
+.markerIcon1.XGJG{
+  height: 25px;
+  background-position: -46px -21px;
+}
+/*2橙*/
+.markerIcon1.YGZ{
   height: 25px;
   background-position: -68px -21px;
 }
-
+/*2紫*/
+.markerIcon1.QTDW{
+  height: 25px;
+  background-position: -91px -21px;
+}
+/*2粉*/
+.markerIcon1.MBJY{
+  height: 25px;
+  background-position: -115px -21px;
+}
 /*map marker style end*/
 /*
   border:#909090 1px solid;

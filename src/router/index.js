@@ -4,6 +4,7 @@ import All1page from '../view/All1page.vue'//首页
 import personInfoTutor from '../view/personInfoTutor.vue'//人员信息教师的页面
 import personInfoStu from '../view/personInfostu.vue'//人员信息教师的页面
 import personInfoTemp from '../view/personInfotemp.vue'//人员信息临时工的页面
+import orgMap from  '../view/orgMap.vue'//机构信息的地图页面
 import orgResetPage from  '../view/orgResetPage.vue'//机构信息的页面
 import page404 from "../view/404.vue"
 
@@ -23,6 +24,11 @@ var router = new Router({
       component:All1page,
     },
     //机构的路由
+    {
+      path:'/organ_map',
+      name:['organ','全区',"D27C86EE280F4D6EA9E1B06752F66220",4,5],
+      component:orgMap,
+    },
     {
       path:'/organ_preschoolEdu',
       name:['organ','学前教育',"D27C86EE280F4D6EA9E1B06752F66220",4,5],

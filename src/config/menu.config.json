@@ -6,7 +6,7 @@
       "icon": "ios-navigate",
       "memuitem": {
         "/All": {
-          "text": "总览项目",
+          "text": "区情总览",
           "name": "/All"
         }
       }
@@ -16,6 +16,10 @@
       "title": "机构信息",
       "icon": "ios-keypad",
       "memuitem": {
+        "/organ_map": {
+          "text": "全区",
+          "name": "/organ_map"
+        },
         "/organ_primaryschool": {
           "text": "小学",
           "name": "/organ_primaryschool"

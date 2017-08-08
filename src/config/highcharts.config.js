@@ -130,6 +130,47 @@ var options = {
       enabled:false
     }
   },
+  //堆叠纵向柱状图
+  stackingColumn:{
+    chart: {
+      type: 'column'                         //指定图表的类型，默认是折线图（line）
+    },
+    title: {
+      text:"标题",
+      useHTML:true,
+      style:{display:"none"}
+    },
+    plotOptions: {
+      series:{
+        stacking: 'normal'
+      }
+    },
+    legend: {
+      reversed: true
+    },
+    xAxis: {
+      categories: ['苹果', '香蕉', '橙子'] //指定x轴分组
+    },
+    yAxis: {
+      /*min:0,*/
+      title: {
+        text: ''               //指定y轴的标题
+      }
+    },
+    series: [{
+      name: '小红',
+      data: [5, 7, 3]
+    },{                              //指定数据列
+      name: '小明',                       //数据列名
+      data: [1, 1, 4]                     //数据
+    },{
+      name: '小华',
+      data: [5, 7, 3]
+    }],
+    credits: {                //去掉hightcharts水印
+      enabled:false
+    }
+  },
   //负值的条形图
   minusBar:{
     chart: {
@@ -231,7 +272,43 @@ var options = {
     credits: {                //去掉hightcharts水印
       enabled:false
     }
+  },
+  //双饼图配置
+  twoPie:{
+    chart: {
+      type: 'pie'
+    },
+    title: {
+      text: ''
+    },
+    colors:['#058DC7', '#50B432', '#ED561B', '#DDDF00',
+      '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
+    plotOptions: {
+      pie: {
+        shadow: false,
+        center: ['50%', '50%']
+      }
+    },
+    series: [{
+      name: '浏览器',
+      data: [
+        {name:"谷歌",color:"#8085e9",y:55.11},
+        {name:"IE",color:"#434348",y:45.11},
+        {name:"斯巴达",color:"#90ed7d",y:75.11},
+        {name:"火狐",color:"#f7a35c",y:75.11}
+      ],
+      size: '60%',//所占总框的大小
+      dataLabels: {//显示每份的文字标签
+        formatter: function () {
+          return this.y > 25 ? this.point.name : null;
+        },
+        color: '#fff',//每份的文字标题颜色
+        distance: -30//每份的文字标题位置
+      }
+    }],
+    credits: {                //去掉hightcharts水印
+      enabled:false
+    }
   }
-  //
 }
 export default options;

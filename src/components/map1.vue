@@ -28,45 +28,83 @@
   .btnBlock button:hover{
     background: #fff;
   }
-
+  .query_block{
+    padding:10px;
+  }
+  .query_block .txt{
+    color: #495060;
+    font-size: 16px;
+    line-height: 30px;
+  }
 </style>
 
 <template>
   <div>
-    <p>区情地图</p>
     <div class="btnBlock">
-      <button @click="deleteMarkerAll">全部</button>
-      <button @click="addAll(mapObj.map,mapObj.markMapData)">学前教育</button>
-      <button>小学</button>
-      <button>中学</button>
-      <button>一贯制</button>
-      <button>特殊教育</button>
-      <button>中职成校</button>
-      <button>民办教育</button>
-      <button>其他单位</button>
-      <button>相关机构</button>
+      <p v-if="has_query" style="overflow: hidden;" class="query_block">
+          <span class="txt">区情地图</span>
+          <Input v-model="query_key" placeholder="学校姓名" style="width: 200px;float:right">
+            <span slot="append" style="cursor: pointer" @click="queryValue">
+                &nbsp;&nbsp;
+                <Icon type="search" size="18"></Icon>
+                &nbsp;&nbsp;
+            </span>
+          </Input>
+      </p>
+      <button @click="addAll(mapObj.map,mapObj.markMapData)">全部</button>
+      <button @click="showMarker('XQJY')">学前教育</button>
+      <button @click="showMarker('XX')">小学</button>
+      <button @click="showMarker('ZX')">中学</button>
+      <button @click="showMarker('YGZ')">一贯制</button>
+      <button @click="showMarker('TSJY')">特殊教育</button>
+      <button @click="showMarker('ZZCX')">中职成校</button>
+      <button @click="showMarker('MBJY')">民办教育</button>
+      <button @click="showMarker('QTDW')">其他单位</button>
+      <button @click="showMarker('XGJG')">相关机构</button>
+      <button @click="showMarker('null')">未分类</button>
     </div>
-    <div id="mapDiv" style="height: 480px;"></div>
+    <div id="mapDiv" style="height: 70vh;"></div>
   </div>
 </template>
 
 <script>
-  import markerdata from "../config/mapdata.json"
+  var infoWindow = new AMap.InfoWindow({//生成一个信息窗体对象
+    autoMove: true,
+    offset: {x: 0, y: -12}
+  });
   export default {
       data: function () {
-        return {mapObj:{}}
+        return {mapObj:{},query_key:""}
       },
       props: {
-        age: {
-          /*type: String,//Number,Boolean,Function,Object,Array,Symbol
-            default: "",
-            required: true,
-            validator: function (value) {
-                return value > 10
-            }*/
+        has_query: {
+          default: false,
+          type:Boolean
         }
       },
       methods: {
+          //处理数据
+          processData:function(data){
+            var mapData = {};
+            var data = data.data;
+            for(var i = 0; i < data.length; i++){
+              var obj = {};
+              obj.title = data[i].title;
+              obj.position = [data[i].lng,data[i].lat];
+              obj.detail =
+                "名称："+data[i].title
+                +"<br>地址："+data[i].address
+                +"<br>tel："+data[i].tel
+                +"<br>网址："+((data[i].url=="null")?"暂无记录":"<a target='_blank' href='"+data[i].url+"'>"+data[i].url+"</a>")
+              if(mapData[data[i].type_py]!=undefined){
+                mapData[data[i].type_py].push(obj)
+              }else{
+                mapData[data[i].type_py]=[];
+                mapData[data[i].type_py].push(obj)
+              }
+            }
+            return mapData;
+          },
           //创建一个地图
           initmap:function(){
             var map = new AMap.Map('mapDiv', {
@@ -74,32 +112,42 @@
               center: [121.099109,31.147121],
               resizeEnable: true,
               scrollWheel:false,//不允许滚轮放大缩小
-              //zoomEnable:false,
               zoom: 11
             });
+            //初始化标记点
+            this.$http.get(window.getHost + 'json/json/School_schoolInfo_schoolMap.json?r=' + Math.random()
+            ).then(function (data) {
+                var mapData = this.processData(data);
+                //初始化标记点，得到所有标记点的数据
+                var mapMarkArr = this.initMarkerAll(map,mapData);
+                this.mapObj.mapMarkArr=mapMarkArr;//在组件里保存地图标记点数据
+                this.mapObj.markMapData=mapData;//js处理过的后台数据
+            })
             //添加地图的平移和缩放控件
             AMap.plugin(['AMap.ToolBar','AMap.Scale'],function(){map.addControl(new AMap.ToolBar())});
             //绘制青浦描边
             this.addqpblock(map);
-            //初始化标记点
-            var mapMarkArr = this.initMarkerAll(map,markerdata.data);
-            this.mapObj.map=map;//地图对象
-            this.mapObj.mapMarkArr=mapMarkArr;//地图标注点数组
-            this.mapObj.markMapData=markerdata.data;//后台数据
+            this.mapObj.map=map;//在组件里保存地图对象
           },
-          //初始化所有的地图标注点
+          //初始化所有的地图标注点，返回地图标记点数组,参数data传递处理过的后台数据
           initMarkerAll:function (map,data){
-            var markAll = {};
+            var markAll = {};//数据格式{key1:{1:obj,2:obj},key2:{1:obj,2:obj}}
             for(var key in data){
               markAll[key]={};
               data[key].forEach(function (value,index,mark) {
-                markAll[key][index]=new AMap.Marker({ //添加自定义点标记
-                  map: map,
-                  position: value.position, //基点位置
-                  title:value.title,
-                  offset: new AMap.Pixel(-17, -42), //相对于基点的偏移位置
-                  content: '<div class="markerIcon1 '+key+'"></div>'   //自定义点标记覆盖物内容
-                })
+                if(value.position[0]!=undefined&&value.position[1]!=undefined){ //判断经纬度是否为undefined
+                  markAll[key][index]=new AMap.Marker({ //添加自定义点标记
+                    map: map,
+                    position: value.position, //基点位置
+                    title:value.title,
+                    offset: new AMap.Pixel(-17, -42), //相对于基点的偏移位置
+                    content: '<div class="markerIcon1 '+key+'"></div>'   //自定义点标记覆盖物的容器
+                  })
+                  AMap.event.addListener( markAll[key][index], "click", function(e){
+                    infoWindow.setContent(value.detail);//设置小弹框的内容
+                    infoWindow.open(map, [e.lnglat.lng,e.lnglat.lat]);//在特定的位置打开小弹框
+                  })//, context
+                }
               })
             }
             return markAll;
@@ -148,7 +196,69 @@
             }
           },
           addAll:function(map,data){
+            this.deleteMarkerAll();//清空原来的标记点
+            infoWindow.close();//清除所有的地图小弹框
             this.mapObj.mapMarkArr=this.initMarkerAll(map,data);
+          },
+          //显示点击的标记点
+          showMarker:function(key){
+            //清空所有的标记点
+            this.deleteMarkerAll();
+            infoWindow.close();//清除所有的地图小弹框
+            var map = this.mapObj.map;//地图对象
+            var markAll = {};//数据格式{key1:{1:obj,2:obj},key2:{1:obj,2:obj}}
+              markAll[key]={};
+              //遍历处理过的后台数据
+              this.mapObj.markMapData[key].forEach(function (value,index,mark) {
+                if(value.position[0]!=undefined&&value.position[1]!=undefined){ //判断经纬度是否为undefined
+                  markAll[key][index]=new AMap.Marker({ //添加自定义点标记
+                    map: map,
+                    position: value.position, //基点位置
+                    title:value.title,//标记点的标题
+                    offset: new AMap.Pixel(-17, -42), //相对于基点的偏移位置
+                    content: '<div class="markerIcon1 '+key+'"></div>'   //自定义点标记覆盖物的样式容器
+                  })
+                  //为标记点添加点击事件，markAll[key][index]为标记点，click为触发方式，第三个参数是回调函数
+                  AMap.event.addListener( markAll[key][index] , "click", function(e){
+                    infoWindow.setContent(value.detail);
+                    infoWindow.open(map, [e.lnglat.lng,e.lnglat.lat]);
+                  })
+                }
+              })
+            this.mapObj.mapMarkArr = markAll;
+          },
+          //queryValue查询学校的函数
+          queryValue:function(){
+            this.query_key=this.query_key.replace(/^\s+|\s+$/gm,'')//获取input输入
+            if(this.query_key==""){//空字符串跳出
+                return false;
+            }
+            this.deleteMarkerAll();//删除所有的点
+            infoWindow.close();//清除所有的地图小弹框
+            var markAll = {};//数据格式{key1:{1:obj,2:obj},key2:{1:obj,2:obj}},存放标记点
+            //开始请求数据，并进行生成标记
+            this.$http.get(window.getHost+"json/School_schoolInfo_schoolMap.json?schoolName="+this.query_key).then(function (data) {
+                var singleMarker = this.processData(data);//处理拿到的数据
+                for(var key in singleMarker){//返回数据就一条，循环为了拿到key
+                  var map = this.mapObj.map;//地图对象
+                  if(singleMarker[key].length==1){
+                    markAll[key]={};
+                    markAll[key][0] = new AMap.Marker({ //添加自定义点标记
+                      map: map,
+                      position: singleMarker[key][0].position, //基点位置
+                      title:singleMarker[key][0].title,//标记点的标题
+                      offset: new AMap.Pixel(-17, -42), //相对于基点的偏移位置
+                      content: '<div class="markerIcon1 '+key+'"></div>'   //自定义点标记覆盖物的样式容器
+                    })
+                    //为标记点添加点击事件，markAll[key][index]为标记点，click为触发方式，第三个参数是回调函数
+                    AMap.event.addListener(markAll[key][0], "click", function(e){
+                      infoWindow.setContent(singleMarker[key][0].detail);
+                      infoWindow.open(map, [e.lnglat.lng,e.lnglat.lat]);
+                    })
+                  }
+                }
+                this.mapObj.mapMarkArr = markAll;//更改mapMarkArr，为删除做准备
+            })
           }
       },
       mounted:function () {
