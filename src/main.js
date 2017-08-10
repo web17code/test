@@ -16,7 +16,7 @@ Vue.use(iView);//注册iveiwui框架
 Vue.use(VueResource);//注册VueResource组件
 //设置本项目的上下文
 //window.getHost="http://192.168.1.217:8088/datacenter-dataview-web/";
-window.getHost="http://demo.zhunedu.com/dataview/"
+window.getHost="http://demo.zhunedu.com/dataview/";
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start();
   next();

@@ -4,23 +4,38 @@
   }
   .layout{
     border: 1px solid #d7dde4;
-    background: #f5f7f9;
+    background: #f5f7f9;/*body color*/
     position: relative;
   }
   /*diao ding start*/
   .layout-ceiling{
-    background: #077;
-    padding: 10px 0;
+    background: #E4EDEA;/*diao ding de color*/
     overflow: hidden;
     color: #fff;
+    border-bottom: 3px solid #156A69;
+  }
+  .layout-ceiling img.avatar{
+    display: block;
+    float: right;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-right: 15px;
   }
   .layout-ceiling-main{
     float: right;
     margin-right: 15px;
+    color: #9ba7b5;
+    padding: 10px 0;
   }
   .layout-ceiling-main a{
-    /*color: #9ba7b5;*/
-    color: #fff;
+    color: #9ba7b5;
+  }
+  .layout-ceiling-main a.userName{
+    color: #363e4f;
+    margin-right: 20px;
+    cursor: default;
   }
   /*diao ding end*/
   .layout-breadcrumb{
@@ -43,7 +58,7 @@
     color: #9ea7b4;
   }
   .layout-menu-left{
-    background: #464c5b;
+    background: #116768;
   }
   .layout-header{
     /*height: 60px;*/
@@ -51,14 +66,16 @@
     margin:15px;
   }
   .layout-logo-left{
-    width: 90%;
     height: 50px;
-    background: floralwhite;
-    border-radius: 3px;
-    margin: 15px auto;
+    /*border-radius: 3px;
+    margin-left: 1%;
+    width: 15%;
+    float: left;*/
   }
   .layout-logo-left img{
     height: 50px;
+    display: block;
+    margin: 0 auto;
   }
   /*long button style*/
   .longButton{
@@ -67,6 +84,27 @@
     display: block;
     font-size: 14px;
   }
+  .layout .ivu-menu-dark {
+    background: #116768;
+  }
+  .layout .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title:hover {
+    color: #fff;
+    background: #116768;
+  }
+  .layout .ivu-menu-dark.ivu-menu-vertical .ivu-menu-opened .ivu-menu-submenu-title {
+    background: #116768;
+  }
+  .layout .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active:hover {
+    border-right: none;
+    color: #fff;
+    background: #1E9D9E!important;
+  }
+  .layout .ivu-menu-dark.ivu-menu-vertical .ivu-menu-opened {
+    background: #167879;
+  }
+  .layout .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item:hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title:hover {
+    color: #fff;
+  }
 </style>
 
 <template>
@@ -74,12 +112,12 @@
     <!--吊顶部分-->
     <div class="layout-ceiling">
       <div class="layout-ceiling-main">
-        <!--<a href="#">注册登录</a> |
-        <a href="#">帮助中心</a> |
-        <a href="#">安全中心</a> |-->
+        <a href="javascript:void(0);" class="userName">{{uerInfo.name}}</a>
         <a href="javascript:void(0);">帮助中心</a> |
         <a href="logout.jsp">注销登录</a>
       </div>
+      <img :src="uerInfo.photo"
+           class="avatar" >
     </div>
     <Row type="flex" class-name="dataview">
       <!--左菜单-->
@@ -120,8 +158,24 @@
             menus:menuConfig.menus,
             openMenuItem:[this.$route.name[0]],//根据路由名字展开菜单
             activeMenuItem:this.$route.path,//根据路由设置选中的菜单
-            isnew:true//销毁组件的一个变量
+            isnew:true,//销毁组件的一个变量
+            uerInfo:{}
           }
+      },
+      mounted:function (){
+        //获取用户信息
+        this.$http.get(window.getHost+"json/Teacher_getUser.json").then(
+            function (data) {
+              this.uerInfo = data.data.data;
+              //头像为空则更换成默认头像
+              if(this.uerInfo.photo==""||this.uerInfo.photo==null||this.uerInfo.photo==undefined){
+                  if(this.uerInfo.sex=="2"){//1男2女
+                    this.uerInfo.photo = "./img/defult/head-woman.png"
+                  }else{
+                    this.uerInfo.photo = "./img/defult/head-man.png"
+                  }
+              }
+            })
       },
       methods:{
         //点击后进行路由跳转
