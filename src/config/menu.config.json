@@ -84,6 +84,17 @@
           "name": "/person_temporary"
         }
       }
+    },
+    "JFBANK": {
+      "name": "JFBANK",
+      "title": "积分银行",
+      "icon": "ios-navigate",
+      "memuitem": {
+        "/JFBANK": {
+          "text": "展示页",
+          "name": "/JFBANK"
+        }
+      }
     }
   }
 }

@@ -6,6 +6,10 @@ import personInfoStu from '../view/personInfostu.vue'//人员信息教师的页�
 import personInfoTemp from '../view/personInfotemp.vue'//人员信息临时工的页面
 import orgMap from  '../view/orgMap.vue'//机构信息的地图页面
 import orgResetPage from  '../view/orgResetPage.vue'//机构信息的页面
+
+//积分银行临时用
+import JFBANK from '../view/JFBANK.vue'
+
 import page404 from "../view/404.vue"
 
 
@@ -141,6 +145,15 @@ var router = new Router({
       name:['person',"临时工"],
       component:personInfoTemp
     },
+
+    //积分银行临时用
+    {
+      path:'/JFBANK',
+      name:"积分银行演示",
+      component:JFBANK
+    },
+
+
     //没有找到路由的情况
     {
       path:'/*',
