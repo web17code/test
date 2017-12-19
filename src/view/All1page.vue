@@ -87,9 +87,9 @@
         </Col>
         <Col span="8">
           <div class="eduOrgTxT">
-            <p>公办：109</p>
-            <p>公办：26</p>
-            <p>公办：5</p>
+            <p>公办：{{GBtxt}}</p>
+            <p>民办：{{MBtxt}}</p>
+            <p>其他：{{QTtxt}}</p>
           </div>
         </Col>
       </Row>
@@ -217,6 +217,9 @@
     name:"app",
     data: function () {
       return {
+          GBtxt:"",
+          MBtxt:"",
+          QTtxt:"",
           //
           "nowMouth":null,//new Date(),
           //图表的大小
@@ -254,6 +257,7 @@
     },
     mounted:function(){
         //this.r1.isshow=false;//渲染完成后隐藏指定的图，这么费劲的做操作主要是因为ie初始化会把v-show=false渲染成display：block。
+      this.initTxt1();
     },
     components:{
       chartHeadless:chartHeadless,//图表组件
@@ -272,6 +276,14 @@
               var worked = dataProcess.All1key_stackingBar2(data,this.All1key_stackingBar2,this.$route,Highcharts);
               new Highcharts.chart("All1key_stackingBar2",worked);
             })
+      },
+      "initTxt1":function(){
+        this.$http.get(window.getHost+"json/Unit_type.json").then(function (data) {
+            console.log(data.data.type_bb)
+            this.GBtxt = data.data.type_bb.GB;
+            this.QTtxt = data.data.type_bb.QT;
+            this.MBtxt = data.data.type_bb.MB;
+        })
       }
     }
  }
