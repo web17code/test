@@ -64,9 +64,15 @@
       if(this.getchartUrl!=""){
         this.$http.get(this.getchartUrl).then(function (data) {
           //处理数据
-          var data = data.data.data;
-          var worked = dataProcess[this.id](data,this.option,this.$route);
-          new Highcharts.chart(this.id,worked);
+          console.log(this.id)
+          if(this.id=="All1course_pie1"){
+            var worked = dataProcess[this.id](data.data,this.option,this.$route);
+            new Highcharts.chart(this.id,worked);
+          }else{
+            var data = data.data.data;
+            var worked = dataProcess[this.id](data,this.option,this.$route);
+            new Highcharts.chart(this.id,worked);
+          }
         })
       }
     }

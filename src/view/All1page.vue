@@ -182,6 +182,19 @@
         </Col>
       </Row>
       <p class="All1_title_content">
+        <Icon type="android-list" size="28" color="#495060"></Icon>
+        <span class="All1_title">课程信息分析</span>
+      </p>
+      <Row class="code-row-bg">
+        <Col span="12">
+        <chartHeadless id="All1course_pie1"
+                       :option="All1course_pie1"
+                       :size="All1_twoPie_size"
+                       :getchartUrl="All1course_pie1_url"></chartHeadless>
+        <p class="p_desc">课程信息统计</p>
+        </Col>
+      </Row>
+      <p class="All1_title_content">
         <Icon type="ios-bookmarks" size="28" color="#495060" ></Icon>
         <span class="All1_title">关键信息</span>
       </p>
@@ -239,6 +252,7 @@
           "All1GBtutor_minusbar5":this.utils.deepCopy(options.minusBar),
           "All1key_stackingBar1":this.utils.deepCopy(options.stackingColumn),
           "All1key_stackingBar2":this.utils.deepCopy(options.stackingColumn),
+          "All1course_pie1":this.utils.deepCopy(options.pie),
           //图表的数据URL
           "All1_twoPie_url":window.getHost+"json/Unit_type.json",
           "All1stu_Pie_url":window.getHost+"json/Student_info_studentHJCountInfo.json",
@@ -252,7 +266,9 @@
           "All1GBtutor_minusbar4_url":window.getHost+"json/Teacher_ageData_ageCount.json?typeName=公办",
           "All1GBtutor_minusbar5_url":window.getHost+"json/Teacher_ageData_teachingCount.json?typeName=公办",
           "All1key_stackingBar1_url":window.getHost+"json/Student_info_studentSXCount.json",
-          "All1key_stackingBar2_url":window.getHost+"json/Teacher_teacherInfo_teacherTXCount.json?typeName=公办&retire=true&time=201708"
+          "All1key_stackingBar2_url":window.getHost+"json/Teacher_teacherInfo_teacherTXCount.json?typeName=公办&retire=true&time=201708",
+          "All1course_pie1_url":window.getHost+"json/Teacher_subject_teacherKCCount.json"
+
       }
     },
     mounted:function(){
@@ -279,7 +295,6 @@
       },
       "initTxt1":function(){
         this.$http.get(window.getHost+"json/Unit_type.json").then(function (data) {
-            console.log(data.data.type_bb)
             this.GBtxt = data.data.type_bb.GB;
             this.QTtxt = data.data.type_bb.QT;
             this.MBtxt = data.data.type_bb.MB;

@@ -14,6 +14,7 @@ var options = {
     tutortitle3:"男女比例",
     tutortitle4:"教师职称统计",
     tutortitle5:"待定5",
+    tutorCourse:"课程信息统计",
     //人员信息教师页的标题
     personTutorTitle1:"教师最高学历统计",
     personTutorTitle2:"教师最高学位统计",
@@ -23,7 +24,9 @@ var options = {
     personstuTitle3:"学生户籍类型分布统计",
     //人员信息临时工的标题
     persontempTitle1:"临时工年龄分布统计",
-    persontempTitle2:"临时工性别分布统计"
+    persontempTitle2:"临时工性别分布统计",
+
+
   },
   //柱状图配置（横向）
   bar:{

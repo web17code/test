@@ -480,6 +480,66 @@ function All1key_stackingBar1(source,worked,route,Highcharts){
   worked.chart.spacing=[100,30,10,30];
   return worked;
 }
+function All1course_pie1 (source,worked,route,Highcharts){
+  var source = source.data;
+  var total = source.total;
+  var sData = source.data;
+  console.log(source)
+  worked.series[0].size = '80%';
+  worked.series[0].name="课程信息统计";
+  worked.series[0].type="pie";
+  worked.series[0].data=[];//清空默认的数据
+  for(var key in sData){
+    worked.series[0].data.push([sData[key].title,sData[key].count])
+  }
+  worked.tooltip={
+    headerFormat: '{series.name}:<br>',
+    pointFormatter: function(){ return this.name+":<b>"+this.y+"，百分比："+((this.y/source.total)*100).toFixed(2)+"%</b><br/>"}
+  };
+  worked.legend = {
+    layout: 'horizontal',//horizontal+vertical
+    align: 'center',
+    //verticalAlign: 'bottom',
+    x: 0,
+    y: 0,
+    width:300,
+    maxHeight:80,
+    floating: false,
+    borderWidth: 1,
+    backgroundColor: ('#FFFFFF'),
+    shadow: true
+  };
+  return worked;
+}
+function tutor5_pie(source,worked,route,Highcharts){
+  console.log(source)
+  var total = source.total;
+  var sData = source.data;
+  worked.series[0].size = '100%';
+  worked.series[0].name="课程信息统计";
+  worked.series[0].type="pie";
+  worked.series[0].data=[];//清空默认的数据
+  for(var key in sData){
+    worked.series[0].data.push([sData[key].title,sData[key].count])
+  }
+  worked.tooltip={
+    headerFormat: '{series.name}:<br>',
+    pointFormatter: function(){ return this.name+":<b>"+this.y+"，百分比："+((this.y/source.total)*100).toFixed(2)+"%</b><br/>"}
+  };
+  worked.legend = {
+    layout: 'horizontal',//horizontal+vertical
+    align: 'center',
+    //verticalAlign: 'bottom',
+    x: 0,
+    y: 0,
+    maxHeight:60,
+    floating: false,
+    borderWidth: 1,
+    backgroundColor: ('#FFFFFF'),
+    shadow: true
+  };
+  return worked;
+}
 function All1key_stackingBar2(source,worked,route,Highcharts){
   var source = source.data;
   worked.series=[];//清空默认的数据
@@ -505,6 +565,7 @@ dataProcess.tutor1_pie = tutor1_pie;
 dataProcess.tutor2_minusBar = tutor2_minusBar;
 dataProcess.tutor3_pie = tutor3_pie;
 dataProcess.tutor4_column = tutor4_column;
+dataProcess.tutor5_pie = tutor5_pie;
 
 dataProcess.persontutor1_column = persontutor1_column;
 dataProcess.persontutor2_column = persontutor2_column;
@@ -527,6 +588,7 @@ dataProcess.All1GBtutor_bar2 = All1GBtutor_bar2;
 dataProcess.All1GBtutor_bar3 = All1GBtutor_bar3;
 dataProcess.All1GBtutor_minusbar4 = All1GBtutor_minusbar4;
 dataProcess.All1GBtutor_minusbar5 = All1GBtutor_minusbar5;
+dataProcess.All1course_pie1 = All1course_pie1;
 dataProcess.All1key_stackingBar1 = All1key_stackingBar1;
 dataProcess.All1key_stackingBar2 = All1key_stackingBar2;
 export default dataProcess;
