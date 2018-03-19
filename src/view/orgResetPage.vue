@@ -117,6 +117,14 @@
                      :ctitle="ctitle.tutortitle4"
                      :chartTitleClass="'chatTitle_red'"></chartx3>
             </Col>
+            <Col span="8" class="Pshadow">
+            <!--教师课程图表5column-->
+            <chartx3 id="tutor5_pie"
+                     :option="tutor5_pie"
+                     :getchartUrl="tutor5_column_url"
+                     :ctitle="ctitle.tutorCourse"
+                     :chartTitleClass="'chatTitle_red'"></chartx3>
+            </Col>
           </Row>
         </transition>
         <Button large
@@ -149,6 +157,7 @@
         "tutor2_minusBar":this.utils.deepCopy(options.minusBar),
         "tutor3_pie":this.utils.deepCopy(options.pie),
         "tutor4_column":this.utils.deepCopy(options.column),
+        "tutor5_pie":this.utils.deepCopy(options.pie),
         //图表获取数据的路径
         "stu1_pie_url":window.getHost+"json/Student_studentData_studentHJCountInfo.json?OUName="+this.$route.name[1],
         "stu2_stackingBar_url":window.getHost+"json/Student_ageData_studentAgeCountInfo.json?OUName="+this.$route.name[1]+"&small_age="+this.$route.name[3]+"&large_age="+this.$route.name[4],
@@ -157,7 +166,8 @@
         "tutor1_pie_url":window.getHost+"json/Teacher_teacherData_teacherHJCount.json?OUName="+this.$route.name[1],
         "tutor2_minusBar_url":window.getHost+"json/Teacher_teacherData_teacherSexAgeCount.json?OUName="+this.$route.name[1],
         "tutor3_pie_url":window.getHost+"json/Teacher_teacherData_teacherSexCount.json?OUName="+this.$route.name[1],
-        "tutor4_column_url":window.getHost+"json/Teacher_teacherData_teacherLevelCount.json?OUName="+this.$route.name[1]
+        "tutor4_column_url":window.getHost+"json/Teacher_teacherData_teacherLevelCount.json?OUName="+this.$route.name[1],
+        "tutor5_column_url":window.getHost+"json/Teacher_subject_teacherKCCount.json?OUName="+this.$route.name[1]
       }
     },
     methods:{
